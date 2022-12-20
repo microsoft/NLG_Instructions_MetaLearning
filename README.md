@@ -1,7 +1,6 @@
-# Project
-
-Code and scripts for **"Boosting Natural Language Generation from Instructions with Meta-Learning", Budhaditya Deb, Guoqing Zheng, Ahmed Hassan Awadallah, EMNLP 2022**
-https://preview.aclanthology.org/emnlp-22-ingestion/2022.emnlp-main.456/ 
+# "Boosting Natural Language Generation from Instructions with Meta-Learning", 
+    Budhaditya Deb, Guoqing Zheng, Ahmed Hassan Awadallah, EMNLP 2022
+  https://preview.aclanthology.org/emnlp-22-ingestion/2022.emnlp-main.456/ 
 
 
 # Setup
