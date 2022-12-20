@@ -66,7 +66,7 @@ CUDA_VISIBLE_DEVICES=2 python data/natural_instructions_dataset/train.py \
 --run_hnet_in_batch_mode_per_task True --task_batch_size_per_iter 3  --num_tasks_per_iter 2  --per_device_train_batch_size 1
 
 
-# With MAML, BART
+## With MAML, BART
 CUDA_VISIBLE_DEVICES=0 python data/natural_instructions_dataset/train.py \
 --output_dir /mnt/Data/models/natural_instructions_v2.5/maml/3/ --overwrite_output_dir \
 --cache_dir /mnt/Data/model_cache_pt/ --overwrite_cache True \
@@ -111,7 +111,7 @@ CUDA_VISIBLE_DEVICES=0 python data/natural_instructions_dataset/train.py \
 --filter_sequences_by_len_diff_from_ref False --pred_ref_diff_tolerance 1.0 --use_train_dataset_for_eval False
 
 
-# With HNET, BART
+## With HNET, BART
 CUDA_VISIBLE_DEVICES=3 python data/natural_instructions_dataset/train.py \
 --output_dir /mnt/Data/models/natural_instructions_v2.5/hnet/4/ --overwrite_output_dir \
 --cache_dir /mnt/Data/model_cache_pt/ --overwrite_cache True \
@@ -156,7 +156,7 @@ CUDA_VISIBLE_DEVICES=3 python data/natural_instructions_dataset/train.py \
 --hnet_include_layer positions \
 --run_hnet_in_batch_mode_per_task True --task_batch_size_per_iter 3  --num_tasks_per_iter 2  --per_device_train_batch_size 1
 
-# With HNET_MAML, BART
+## With HNET_MAML, BART
 CUDA_VISIBLE_DEVICES=2 python data/natural_instructions_dataset/train.py \
 --output_dir /mnt/Data/models/natural_instructions_v2.5/hnet_maml/ --overwrite_output_dir \
 --cache_dir /mnt/Data/model_cache_pt/ --overwrite_cache True \
