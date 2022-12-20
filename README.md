@@ -1,16 +1,15 @@
 # Project
 
-> This repo shares the code for the paper "Boosting Natural Language Generation from Instructions with Meta-Learning", Budhaditya Deb, Guoqing Zheng, Ahmed Hassan Awadallah, EMNLP 2022, https://preview.aclanthology.org/emnlp-22-ingestion/2022.emnlp-main.456/ 
+This repo shares the code for the paper "Boosting Natural Language Generation from Instructions with Meta-Learning", Budhaditya Deb, Guoqing Zheng, Ahmed Hassan Awadallah, EMNLP 2022, https://preview.aclanthology.org/emnlp-22-ingestion/2022.emnlp-main.456/ 
 
 
-
+# Setup
 
 ## Setting up the Data Directory
 - Download data from repository: allenai/natural-instructions-expansion: Expanding natural instructions. https://github.com/allenai/natural-instructions-expansion
 - Run data_utils.py for some basic splits and preprocessing of the NI dataset
 
 
-# Natural Language Generation through Natural Interactions
 
 ## Training and evaluation
 
