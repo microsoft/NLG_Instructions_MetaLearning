@@ -1,0 +1,69 @@
+Answer Geneartion, Algebra	Answer Geneartion, Algebra	Answer Geneartion, Algebra
+Answer Generation	Answer generation	Answer Generation
+Answer Generation	Answer Generation	Answer Generation
+Answer Generation	Answer Generation, Arithmetic	Answer Generation, Arithmetic
+Answer Generation	Answer generation, Legal	Answer Generation
+Answer Generation	Classification	Answer Generation
+Answer Generation	Counting	Answer Generation
+Answer Generation	Ethical Judgment	Answer Generation
+Answer Generation	Sentence Generation	Answer Generation
+Answer Generation	Text Generation	Answer Generation
+Answer Generation	Text Modification	Answer Generation
+Answer Generation, Arithmetic	Answer Generation, Arithmetic	Answer Generation, Arithmetic
+Answer Generation, Arithmetic	Answer Generation, Mathematics	Answer Generation, Arithmetic
+Answer Generation, Arithmetic	Math Question Answering	Answer Generation, Arithmetic
+Answer Generation, Combinatorics	Answer Generation, Combinatorics	Answer Generation, Combinatorics
+Answer Generation, Geometry	Math Question Answering	Answer Generation, Geometry
+Answer Generation, Pronoun Disambiguation	Pronoun Disambiguation	Answer Generation, Pronoun Disambiguation
+Answer Generation, Sentence Comparison	Answer Generation, Sentence Comparison	Answer Generation, Sentence Comparison
+Binary Classification	Binary Classification	Binary Classification
+Classification	Answer Generation	Classification
+Classification	Classification	Classification
+Classification	Classification, Legal	Classification
+Classification	Text Generation	Classification
+Classification, Sentiment Analysis	Classification	Classification, Sentiment Analysis
+Classification, Sentiment Analysis	Sentiment Analysis, Classification	Classification, Sentiment Analysis
+Commonsense Reasoning	Commonsense Reasoning, Classification	Commonsense Reasoning
+Counting	Counting	Counting
+Counting, Classification	Counting, Classification	Counting, Classification
+Document Sentiment Classification	Document Sentiment Classification	Document Sentiment Classification
+Document Sentiment Verification	Document Sentiment Verification	Document Sentiment Verification
+Entity Detection	Entity Detection	Entity Detection
+Ethical Judgment	Ethical Judgment	Ethical Judgment
+Generation, Paraphrasing	Generation, Paraphrase	Generation, Paraphrasing
+Incorrect Answer Generation	Incorrect Answer Generation	Incorrect Answer Generation
+Incorrect Answer Generation	Incorrect Answer generation	Incorrect Answer Generation
+Incorrect Answer Generation	Legal, Incorrect answer generation	Incorrect Answer Generation
+Incorrect Classification	Classification	Incorrect Classification
+Language Identification	Language Identification	Language Identification
+Language Identification	Language Identification (Binary)	Language Identification
+Language Translation	Language Translation	Language Translation
+Logic	Logic	Logic
+Long Text Generation	Long Text Generation	Long Text Generation
+Mathematics	Classification, Mathematics	Classification. Mathematics
+NER/Labeling	Named Entity Recognition	NER/Labeling
+Order Generation	Order Generation	Order Generation
+Question Decomposition	Question Decomposition	Question Decomposition
+Question Decomposition	Question decomposition	Question Decomposition
+Question Generation	Question generation	Question Generation
+Question Generation	Question Generation	Question Generation
+Sentence Generation	Sentence Generation	Sentence Generation
+Sentence Generation	Sentence generation	Sentence Generation
+Sentence Generation	Story Completion	Sentence Generation
+Sentence Sentiment Classification	Sentence Sentiment Classification	Sentence Sentiment Classification
+Sentence Sentiment Verification	Sentence Sentiment Verification	Sentence Sentiment Verification
+Structured Query Classification	Structered Query Classification	Structured Query Classification
+Structured Query Generation	Structered Query Generation	Structured Query Generation
+Structured Text Generation	Structured Text Generation	Structured Text Generation
+Summarization	Summarization	Summarization
+Supporting Fact Identification	Supporting Fact Identification	Supporting Fact Identification
+Text Generation	Text Generation	Text Generation
+Text Modification	Text modification	Text Modification
+Text Modification	Text Modification	Text Modification
+Text Modification, Arithmetic	Text Modification, Arithmetic	Text Modification, Arithmetic
+Title Generation	Title Generation	Title Generation
+Translation	Translation	Language Translation
+Unanswerable Question Generation	Unanswerable Question Generation	Unanswerable Question Generation
+Verification	Verification	Verification
+Wrong Answer Generation	Incorrect Answer Generation	Incorrect Answer Generation
+}

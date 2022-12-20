@@ -1,0 +1,150 @@
+description: HP Search run for natural instructions Meta
+target:
+  # service: amlk8s
+  # name: itphyperdgx2cl1
+  # vc: hai3
+  
+  # Standard_NC24rs_v2
+  # service: amlk8s
+  # name: itpeusp100cl
+  # vc: resrchvc
+  
+  service: amlk8s
+  name: itplabrr1cl1
+  vc: resrchvc
+
+environment:
+  # https://phillytools.azurewebsites.net/master/advanced/5_customizing_dockers.html
+  # image: huggingface/transformers-pytorch-gpu:latest
+  # registry: registry.hub.docker.com   # this is the default
+  image: pytorch/pytorch:1.9.0-cuda11.1-cudnn8-devel
+  # image: pytorch/pytorch:1.4-cuda10.1-cudnn7-devel
+  # registry: docker.io # any public registry can be specified here
+  image_setup:
+  - pip install transformers==4.11.0
+  - pip install datasets
+  - pip install ruamel.yaml==0.16 --disable-pip-version-check
+  - pip install rouge_score
+  - pip install accelerate
+  - pip install py7zr
+  - pip install rouge-metric
+  - pip install learn2learn
+  - pip install higher
+
+storage:
+  data:
+    storage_account_name: budebsmartreplymltl
+    container_name: amulet
+    mount_dir: /mnt/amulet
+
+
+code:
+  # local directory of the code. this will be uploaded to the server.
+  # $CONFIG_DIR is expanded to the directory of this config file
+  local_dir: /mnt/Repos/LIT/Projects/NLGNI/
+
+data:
+  local_dir: /mnt/Data/natural_instructions_v2.5/
+  remote_dir: Data
+
+      # --output_dir $$AMLT_DATA_DIR/models/natural_instructions_v2.5/itplabrr1cl1/HNET_MAML/BBase_True_True_False_False_2E-05_0.0001_3_10_2_20_500_128_10_True_6_13_22
+
+search:
+  job_template:
+    name: HPsearch_{experiment_name:s}_{add_instruction}_{add_positive}_{add_explanation}_{num_examples}
+    sku: G1
+    command:
+    - python $$AMLT_CODE_DIR/data/natural_instructions_dataset/train.py
+      --model_name_or_path {model_name} --tokenizer_name {model_name}
+      --output_dir $$AMLT_DATA_DIR/models/natural_instructions_v2.5/itplabrr1cl1/HNET_MAML/BLarge_{add_instruction}_{add_positive}_{add_explanation}_{train_task_list}_{lr}_{inner_lr}_{inner_steps}_{inner_batch}_{inner_tasks}_{ga_steps}_{wa_steps}_{hnet_hidden_dim}_{hnet_alt_steps}_{batch_mode}_6_9_22
+      --dataset_name natural_instructions_v2.5 --dataset_folder $$AMLT_DATA_DIR/natural_instructions_v2.5/ --overwrite_output_dir True
+      --cache_dir $$AMLT_DATA_DIR/model_cache_pt/ --overwrite_cache True
+      --do_train --do_eval --do_predict --predict_with_generate
+      --max_source_length 1024 --max_target_length 128 --decode_max_length 128
+      --metric_for_best_model rouge-l-f --multi_ref_mode best
+      --disable_tqdm True --save_checkpoints True --resume_from_checkpoint True
+      --num_train_epochs 9 --eval_steps 500  --logging_steps 10  --save_steps 500 
+      --load_best_model_at_end True --evaluation_strategy steps --metric_for_best_model rouge-l-f --multi_ref_mode best
+      --log_task_level_metrics True --show_example_predictions 0 --log_level warning
+      --per_device_train_batch_size 1 --per_device_eval_batch_size 4
+      --use_train_tasks_list {train_task_list} --use_exclude_tasks_list {exclude_task_list}
+      --use_test_tasks_list {test_task_list} --use_eval_tasks_list {eval_task_list}
+      --train_test_split_mode random_tasks_k_shot --filter_dataset_by_length True
+      --num_kshot_train_instances_per_task {num_kshot_train_instances}  
+      --num_train_instances_per_task {num_train_instances} --num_test_instances_per_task 50 --num_eval_instances_per_task 100
+      --adafactor True --fp16 False --lr_scheduler_type linear --gradient_checkpointing False
+      --learning_rate {lr} --warmup_steps {wa_steps} --gradient_accumulation_steps {ga_steps} --lr_scheduler_type linear
+      --add_category False --add_task_summary False --add_instruction {add_instruction} --add_positive_examples {add_positive}
+      --add_negative_examples False --add_explanations {add_explanation}  --num_examples_in_instruction {num_examples} --prepend_inst_in_enc_or_dec encoder
+      --filter_sequences_by_len_diff_from_ref False --pred_ref_diff_tolerance 1.0
+      --train_loop_opt_type hnet_maml 
+      --hnet_model_name_or_path {model_name} --hnet_tokenizer_name {model_name}  
+      --hnet_add_instruction_to_mainlm True --hnet_use_encoder_last_hidden_state False  
+      --hnet_exclude_encoder_or_decoder {hnet_exc_enc_or_dec}
+      --hnet_opt_mode {hnet_opt} --hnet_hidden_dim {hnet_hidden_dim} --hnet_alternating_num_steps {hnet_alt_steps}
+      --hnet_use_eval_for_nograd {hnet_nograd}
+      --task_sampling_mode uniform --target_task_sampling_rate_increase 0.000000
+      --inner_loop_learning_rate {inner_lr} --max_grad_norm_meta 1.0 --use_second_order_gradients False 
+      --use_multi_step_loss_optimization False  --multi_step_loss_num_steps 5000
+      --num_inner_training_steps_per_iter {inner_steps} --task_batch_size_per_iter {inner_batch}  --num_tasks_per_iter {inner_tasks}
+      --use_meta_sgd False --meta_sgd_per_param_per_layer False
+      --use_train_dataset_for_eval True
+      --run_hnet_in_batch_mode_per_task {batch_mode}
+
+
+  max_trials: 16
+  parallel_trials: 16
+  max_duration_hours: 120
+  metrics: # optimization objective. Required for bayesian sampling and early_termination, ignored otherwise
+    - name: eval_rouge-l-f
+      goal: maximize
+  sampling: grid
+  params:
+    - name: model_name
+      values: choice("facebook/bart-large")
+    - name: ga_steps
+      values: choice(20, 30, 40)
+    - name: num_train_instances
+      values: choice(100)
+    - name: hnet_opt
+      values: choice("alternating_hnet_main" )
+    - name: hnet_exc_enc_or_dec
+      values: choice("restricted_encoder")
+    - name: hnet_hidden_dim
+      values: choice(128)
+    - name: hnet_alt_steps
+      values: choice(10)
+    - name: hnet_nograd
+      values: choice("True")
+    - name: batch_mode
+      values: choice("True")
+    - name: lr
+      values: choice(0.00002, 0.00001)
+    - name: inner_lr
+      values: choice(0.00005)
+    - name: inner_steps
+      values: choice(3)
+    - name: inner_batch
+      values: choice(2)
+    - name: inner_tasks
+      values: choice(2)
+    - name: wa_steps
+      values: choice(500)
+    - name: num_kshot_train_instances
+      values: choice(0)
+    - name: add_instruction
+      values: choice("True")
+    - name: add_positive
+      values: choice("True")
+    - name: add_explanation
+      values: choice("False")
+    - name: num_examples
+      values: choice(1)
+    - name: train_task_list
+      values: choice("False")
+    - name: test_task_list
+      values: choice("False")
+    - name: eval_task_list
+      values: choice("TEST_TASKS_LIST_SUMM_TITLE")
+    - name: exclude_task_list
+      values: choice("EXCLUDE_TASKS_LIST_SUMM_TITLE")

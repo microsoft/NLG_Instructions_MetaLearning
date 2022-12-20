@@ -1,0 +1,49 @@
+Question Generation	268641
+Answer Generation	453672
+Incorrect Answer Generation	130462
+Classification	438957
+Long Text Generation	56029
+Text Modification	46804
+Verification	23465
+Incorrect AnswerGeneration	8713
+Logic	23
+Structured Query Generation	4506
+Structured Query Classification	2893
+Supporting Fact Identification	793
+Arithmetic	15600
+Algebra	3453
+Mathematics	5200
+Answer Generation, Arithmetic	48648
+Text Modification, Arithmetic	3987
+Sentence Generation	51032
+Ethical Judgment	6794
+Generation, Paraphrasing	10654
+Answer Generation, Sentence Comparison	5200
+Commonsense Reasoning	1558
+Translation	43572
+Answer Generation, Geometry	104
+Structured Text Generation	18736
+Wrong Answer Generation	1289
+Binary Classification	16457
+Counting	27600
+Counting, Classification	5200
+Question Decomposition	8072
+Entity Detection	3006
+Answer Generation, Combinatorics	3988
+Answer Generation, Pronoun Disambiguation	548
+Summarization	10399
+Incorrect Classification	1506
+Order Generation	5200
+Language Identification	15998
+Unanswerable Question Generation	25480
+Answer Generation, Arithemetic	41584
+Text Generation	2961
+Title Generation	2671
+Document Sentiment Classification	2683
+Sentence Sentiment Classification	5192
+Sentence Sentiment Verification	5196
+Document Sentiment Verification	5198
+Classification, Sentiment Analysis	10382
+NER/Labeling	2976
+Senetence Generation	480
+Language Translation	12473
